@@ -19,9 +19,12 @@ if not exist .git (
 git add .
 git commit -m "fix: mobile responsiveness and layout polish"
 
-:: Envia para o branch principal (main ou master)
+:: Garante que estamos no branch main
+git branch -M main
+
+:: Envia para o GitHub (Cloudflare)
 echo [!] Enviando para o GitHub...
-git push origin main || git push origin master
+git push -u origin main
 
 echo.
 echo ==========================================
