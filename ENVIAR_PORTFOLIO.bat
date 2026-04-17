@@ -13,6 +13,9 @@ if not exist .git (
     echo [!] Inicializando repositório Git...
     git init
     git remote add origin https://github.com/luanfernandesjiujitsu-maker/portfolio.git
+) else (
+    echo [!] Ajustando remote origin...
+    git remote set-url origin https://github.com/luanfernandesjiujitsu-maker/portfolio.git
 )
 
 :: Atualiza arquivos

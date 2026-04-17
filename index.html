@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luan Fernandes | Apresentação Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-primary: #7000ff;
+            --accent-secondary: #00d4ff;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        /* --- BACKGROUND MESH --- */
+        .mesh-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #111, #000);
+        }
+
+        .mesh-blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-primary);
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-secondary);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 50px) scale(1.1); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            padding-top: 80px;
+        }
+
+        .badge {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-secondary);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -3px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--accent-secondary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(112, 0, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(112, 0, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 10rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: var(--card-radius);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(112, 0, 255, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(112, 0, 255, 0.3);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(112, 0, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            padding: 10rem 5%;
+            background: radial-gradient(circle at 10% 50%, rgba(112, 0, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .image-frame {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .about-text {
+            flex: 1.2;
+        }
+
+        .about-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CTA BANNER --- */
+        .cta-banner {
+            margin: 10rem 5%;
+            padding: 6rem;
+            background: linear-gradient(135deg, var(--accent-primary), #4b00aa);
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        .cta-banner h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .about-content { flex-direction: column; }
+            .hero-title { font-size: 4rem; }
+            .cta-banner { padding: 3rem; }
+            .cta-banner h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-container">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+    </div>
+
+    <nav>
+        <div class="logo">LUAN<span>.PRM</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Serviços</a>
+            <a href="#about">Sobre</a>
+            <a href="#contact">Contato</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="badge">Especialista em UI/UX Premium</div>
+        <h1 class="hero-title">A Presença Digital que<br><span class="gradient-text">Seu Negócio Merece.</span></h1>
+        <p class="hero-subtitle">Transformo ideias em experiências digitais de alto impacto, unindo design de luxo com performance excepcional para escalar sua marca.</p>
+        <div class="btn-group">
+            <a href="https://wa.me/5521971363690" class="btn btn-primary" id="cta-main">Solicitar Orçamento</a>
+            <a href="#services" class="btn btn-secondary">Explorar Serviços</a>
+        </div>
+    </section>
+
+    <section id="services" class="features">
+        <div class="section-header">
+            <h2>Experiências Sob Medida</h2>
+            <p style="color: var(--text-muted)">Desenvolvimento focado em exclusividade e conversão.</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <div class="icon-box">⚡</div>
+                <h3>Landing Pages High-End</h3>
+                <p>Sites focados em conversão imediata, com design que transmite autoridade e confiança instantânea.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">💎</div>
+                <h3>Identidade Digital</h3>
+                <p>Criamos uma estética única para sua marca, garantindo que você se destaque em um mercado saturado.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">📱</div>
+                <h3>Performance & SEO</h3>
+                <p>Seu site ultra rápido em todos os dispositivos, otimizado para os mecanismos de busca desde o primeiro dia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-image">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=800&auto=format&fit=crop" alt="Luan Fernandes" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+                </div>
+            </div>
+            <div class="about-text">
+                <h2>Luan Fernandes</h2>
+                <p>Com formação pela PUC-Rio e anos de experiência no mercado de luxo digital, dedico minha carreira a elevar o patamar de presença online de empresários e marcas ambiciosas.</p>
+                <p>Minha abordagem combina psicologia de consumo, design minimalista e as tecnologias mais modernas da web para criar não apenas sites, mas ativos digitais lucrativos.</p>
+                <a href="#contact" class="btn btn-secondary">Conheça minha história</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-banner">
+        <h2>Pronto para elevar seu patamar?</h2>
+        <p style="margin-bottom: 3rem; font-size: 1.2rem; opacity: 0.9;">Restam poucas vagas para projetos este mês. Garanta sua reserva agora.</p>
+        <div class="btn-group" style="justify-content: center;">
+            <a href="https://wa.me/5521971363690" class="btn btn-secondary" style="background: white; color: var(--accent-primary); border: none;">Falar no WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Luan Fernandes. Todos os direitos reservados. Design by Luan .PRM</p>
+    </footer>
+
+    <script>
+        // Feature Card Hover Effect
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
