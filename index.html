@@ -1,4 +1,3 @@
-<!-- ELITE STACK V1.0 - BUILD TRIGGER -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -851,7 +850,7 @@
     
     if (input.value.trim() !== "") {
       const code = input.value.trim();
-      // Conforme regra: cupom força o método para PIX/Débito
+      // Força o método de pagamento para PIX (conforme regra: cupom apenas para PIX/Débito)
       const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix";
       
       // Atualiza todos os botões do site
@@ -874,13 +873,13 @@
     } else {
       // Sem cupom, volta para a URL original que permite cartão/6x
       buyBtns.forEach(btn => {
-        btn.href = originalUrl;
+        btn.href = originalUrl + "?payment_method=pix";
       });
       status.style.display = "none";
       input.style.borderColor = "rgba(255,255,255,0.1)";
       mainPrice.style.textDecoration = "none";
       mainPrice.style.opacity = "1";
-      mainPrice.style.fontSize = "3.2rem";
+      mainPrice.style.fontSize = "3.26rem";
       discPrice.style.display = "none";
     }
   }

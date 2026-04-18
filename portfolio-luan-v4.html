@@ -491,7 +491,7 @@
 </nav>
 
 <div class="urgency-bar">
-  🔥 Oferta limitada — de <s>R$ 1.197,90</s> por apenas <strong>R$ 697,90</strong> &nbsp;·&nbsp; Vagas limitadas este mês
+  🔥 Oferta limitada — de <s>R$ 1.197,90</s> por apenas <strong>R$ 697,90</strong> (em até 6x) &nbsp;·&nbsp; Vagas limitadas este mês
 </div>
 
 <!-- HERO -->
@@ -739,6 +739,7 @@
         <div class="price-badge">⚡ Oferta especial</div>
         <div class="price-old">De R$ 1.197,90</div>
         <div class="price-current" id="main-price"><span>R$</span> 697<small style="font-size:1.8rem;font-weight:900;">,90</small></div>
+        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-top: -0.5rem; margin-bottom: 1.5rem;">ou em até <strong>6x de R$ 116,31</strong> no cartão</div>
         <div id="discounted-price" style="display: none; color: #10b981; font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; margin-top: -0.5rem; margin-bottom: 0.5rem;">
           <span style="font-size: 1.2rem; vertical-align: top; margin-top: 0.8rem; display: inline-block; margin-right: 4px;">R$</span>628<small style="font-size:1.8rem;font-weight:900;">,11</small>
         </div>
@@ -746,7 +747,8 @@
         
         <!-- CAMPO DE CUPOM PREMIUM -->
         <div class="coupon-area" style="margin-bottom: 1.5rem; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 0.8rem;">
-          <label style="display: block; font-size: 0.75rem; color: var(--accent3); margin-bottom: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Possui um cupom?</label>
+          <label style="display: block; font-size: 0.75rem; color: var(--accent3); margin-bottom: 0.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Possui um cupom?</label>
+          <div style="font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem;">*Válido apenas para pagamentos via <strong>PIX ou Débito</strong></div>
           <div style="display: flex; gap: 8px;">
             <input type="text" id="coupon-input" placeholder="Digite aqui..." style="flex: 1; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; padding: 0.5rem 0.8rem; font-size: 0.85rem; outline: none; transition: border-color 0.2s;">
             <button onclick="applyCoupon()" style="background: var(--accent); color: white; border: none; border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: all 0.2s; white-space: nowrap;">APLICAR</button>
@@ -848,6 +850,7 @@
     
     if (input.value.trim() !== "") {
       const code = input.value.trim();
+      // Força o método de pagamento para PIX (conforme regra: cupom apenas para PIX/Débito)
       const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix";
       
       // Atualiza todos os botões do site
@@ -858,7 +861,7 @@
       // Efeito visual de preço caindo
       status.style.display = "block";
       status.style.color = "#10b981";
-      status.innerText = "✨ Cupom '" + code + "' aplicado!";
+      status.innerText = "✨ Cupom '" + code + "' aplicado para PIX/Débito!";
       input.style.borderColor = "#10b981";
       
       // Riscar preço antigo e mostrar novo
@@ -868,14 +871,15 @@
       discPrice.style.display = "block";
       
     } else {
+      // Sem cupom, volta para a URL original que permite cartão/6x
       buyBtns.forEach(btn => {
-        btn.href = originalUrl;
+        btn.href = originalUrl + "?payment_method=pix";
       });
       status.style.display = "none";
       input.style.borderColor = "rgba(255,255,255,0.1)";
       mainPrice.style.textDecoration = "none";
       mainPrice.style.opacity = "1";
-      mainPrice.style.fontSize = "3.2rem";
+      mainPrice.style.fontSize = "3.26rem";
       discPrice.style.display = "none";
     }
   }
