@@ -850,8 +850,8 @@
     
     if (input.value.trim() !== "") {
       const code = input.value.trim();
-      // Força o método de pagamento para PIX (conforme regra: cupom apenas para PIX/Débito)
-      const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix";
+      // Força APENAS PIX (esconde Cartão e Boleto conforme regra: cupom apenas para PIX)
+      const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix&hideCard=true&hideBoleto=true";
       
       // Atualiza todos os botões do site
       buyBtns.forEach(btn => {
@@ -871,7 +871,7 @@
       discPrice.style.display = "block";
       
     } else {
-      // Sem cupom, volta para a URL original que permite cartão limitado a 6x
+      // Sem cupom, volta para a URL original que permite cartão limitado a 6x (split=6)
       buyBtns.forEach(btn => {
         btn.href = originalUrl + "?split=6";
       });
