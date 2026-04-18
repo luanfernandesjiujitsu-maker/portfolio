@@ -481,7 +481,7 @@
     <li><a href="#projetos">Projetos</a></li>
     <li><a href="#processo">Processo</a></li>
     <li><a href="#oferta">Preços</a></li>
-    <li><a href="https://pay.kiwify.com.br/gK26mtX?payment_method=pix" class="nav-cta">Solicitar orçamento</a></li>
+    <li><a href="https://pay.kiwify.com.br/gK26mtX?split=6" class="nav-cta">Solicitar orçamento</a></li>
   </ul>
   <button class="mobile-menu-btn" id="menuToggle">
     <span></span>
@@ -501,7 +501,7 @@
     <h1 class="hero-title">Seu negócio merece<br>um site <span class="grad">que vende</span></h1>
     <p class="hero-subtitle">Fundada por Luan, a <strong>ELITE STACK</strong> cria sites premium com design exclusivo que geram resultados reais e autoridade imediata.</p>
     <div class="hero-cta-group">
-      <a href="https://pay.kiwify.com.br/gK26mtX?payment_method=pix" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.4rem;background: var(--green) !important; color: white !important;">COMPRAR AGORA</a>
+      <a href="https://pay.kiwify.com.br/gK26mtX?split=6" class="btn-primary" style="font-size:1.05rem;padding:1.1rem 2.4rem;background: var(--green) !important; color: white !important;">COMPRAR AGORA</a>
       <a href="#projetos" class="btn-secondary" style="font-size:1.05rem;padding:1.1rem 2.4rem;">Ver projetos</a>
     </div>
     <div class="hero-stats">
@@ -766,7 +766,7 @@
           <li class="price-feature">Entrega em até 7 dias úteis</li>
           <li class="price-feature">Suporte Prioritário</li>
         </ul>
-        <a href="https://pay.kiwify.com.br/gK26mtX?payment_method=pix" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1.1rem;background: var(--green) !important; color: white !important;">COMPRAR AGORA</a>
+        <a href="https://pay.kiwify.com.br/gK26mtX?split=6" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1.1rem;background: var(--green) !important; color: white !important;">COMPRAR AGORA</a>
         <div class="garantia-box">
           <div class="garantia-icon">🛡️</div>
           <div class="garantia-text"><strong>Garantia de 7 dias de suporte</strong>Qualquer ajuste pós-entrega é imediato.</div>
@@ -804,7 +804,7 @@
   <h2 class="cta-title">Pronto para ter um site<br><span class="grad">que realmente funciona?</span></h2>
   <p class="cta-sub">Fale comigo agora pelo WhatsApp e receba um orçamento personalizado em menos de 24h.</p>
   <div class="cta-buttons">
-    <a href="https://pay.kiwify.com.br/gK26mtX?payment_method=pix" class="btn-primary" style="font-size:1.05rem;padding:1.15rem 2.5rem;">🚀 Começar meu projeto agora</a>
+    <a href="https://pay.kiwify.com.br/gK26mtX?split=6" class="btn-primary" style="font-size:1.05rem;padding:1.15rem 2.5rem;">🚀 Começar meu projeto agora</a>
     <a href="https://wa.me/5521981498799?text=Olá Luan! Tenho uma dúvida sobre o site." class="btn-secondary" style="font-size:1.05rem;padding:1.15rem 2.5rem;">Conversar no WhatsApp</a>
   </div>
 </div>
@@ -871,9 +871,9 @@
       discPrice.style.display = "block";
       
     } else {
-      // Sem cupom, volta para a URL original que permite cartão/6x
+      // Sem cupom, volta para a URL original que permite cartão limitado a 6x
       buyBtns.forEach(btn => {
-        btn.href = originalUrl + "?payment_method=pix";
+        btn.href = originalUrl + "?split=6";
       });
       status.style.display = "none";
       input.style.borderColor = "rgba(255,255,255,0.1)";
