@@ -56,7 +56,11 @@
   }
   .nav-logo { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.5px; color: var(--white); text-decoration: none; }
   .nav-logo span { color: var(--accent2); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; transition: all 0.3s ease; }
+  @media (max-width: 900px) {
+    .nav-links { display: none !important; }
+    .nav-links.active { display: flex !important; }
+  }
   .nav-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
   .nav-cta {
@@ -387,7 +391,6 @@
     .hero-visual { flex: none; width: 100%; max-width: 380px; margin: 0 auto; }
     .hero-cta-group, .hero-stats { justify-content: center; }
     .sobre-grid, .oferta-wrapper { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
     
     .maintenance-bump {
       flex-direction: column !important;
@@ -427,7 +430,7 @@
       position: fixed;
       top: 0;
       right: -100%;
-      width: 80%;
+      width: 100% !important;
       height: 100vh;
       background: rgba(5,5,8,0.98);
       backdrop-filter: blur(20px);
@@ -459,6 +462,7 @@
     .urgency-bar { font-size: 0.72rem; padding: 0.5rem 0.8rem; margin-top: 55px; }
     
     .nav-logo { font-size: 1rem; }
+    nav { padding: 1.1rem 1.5rem !important; }
 
     /* Fix image overflow in "Sobre" on mobile */
     .sobre-img { aspect-ratio: 1/1; font-size: 4rem; }
