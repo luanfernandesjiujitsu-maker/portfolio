@@ -58,8 +58,13 @@
   .nav-logo span { color: var(--accent2); }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; transition: all 0.3s ease; }
   @media (max-width: 900px) {
-    .nav-links { display: none !important; }
-    .nav-links.active { display: flex !important; }
+    .nav-links { 
+      display: none !important; 
+    }
+    .nav-links.active { 
+      display: flex !important; 
+      right: 0 !important;
+    }
   }
   .nav-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
@@ -425,22 +430,21 @@
     }
 
     /* MOBILE NAV ADJUSTMENTS */
-    .mobile-menu-btn { display: flex; }
+    .mobile-menu-btn { display: flex !important; }
     .nav-links {
-      position: fixed;
+      position: fixed !important;
       top: 0;
       right: -100%;
       width: 100% !important;
-      height: 100vh;
-      background: rgba(5,5,8,0.98);
-      backdrop-filter: blur(20px);
-      flex-direction: column;
-      justify-content: center;
-      gap: 2.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border-left: 1px solid rgba(124,58,237,0.2);
+      height: 100vh !important;
+      background: #050508 !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      gap: 2.5rem !important;
+      transition: all 0.3s ease-in-out !important;
+      z-index: 10001 !important;
     }
-    .nav-links.active { right: 0; display: flex; }
+    .nav-links.active { right: 0 !important; display: flex !important; }
     .nav-links a { font-size: 1.2rem; color: var(--white); }
     
     .hero-title { font-size: clamp(2.5rem, 10vw, 3.5rem); letter-spacing: -1.5px; }
@@ -854,28 +858,26 @@
     
     if (input.value.trim() !== "") {
       const code = input.value.trim();
-      // Força APENAS PIX (esconde Cartão e Boleto conforme regra: cupom apenas para PIX)
-      const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix&hideCard=true&hideBoleto=true";
+      // Força APENAS PIX (esconde Cartão e Boleto de forma definitiva)
+      const newUrl = originalUrl + "?coupon=" + encodeURIComponent(code) + "&payment_method=pix&card=0&boleto=0&only_pix=1&methods=pix";
       
       // Atualiza todos os botões do site
       buyBtns.forEach(btn => {
         btn.href = newUrl;
       });
 
-      // Efeito visual de preço caindo
+      // Efeito visual
       status.style.display = "block";
       status.style.color = "#10b981";
       status.innerText = "✨ Cupom '" + code + "' aplicado para PIX/Débito!";
       input.style.borderColor = "#10b981";
       
-      // Riscar preço antigo e mostrar novo
       mainPrice.style.textDecoration = "line-through";
       mainPrice.style.opacity = "0.5";
-      mainPrice.style.fontSize = "1.5rem";
       discPrice.style.display = "block";
       
     } else {
-      // Sem cupom, volta para a URL original que permite cartão limitado a 6x (split=6)
+      // Sem cupom, volta para o limite de 6x
       buyBtns.forEach(btn => {
         btn.href = originalUrl + "?split=6";
       });
@@ -883,7 +885,6 @@
       input.style.borderColor = "rgba(255,255,255,0.1)";
       mainPrice.style.textDecoration = "none";
       mainPrice.style.opacity = "1";
-      mainPrice.style.fontSize = "3.26rem";
       discPrice.style.display = "none";
     }
   }
